@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 640px;
+				height: 140px;
+				margin: 100px auto;
+			}
+			#list {
+				height: 138px;
+				border-left: 1px solid gray;
+				position: relative;
+			}
+			#list li {
+				float: left;
+				width: 50px;
+				height: 138px;
+				border: 1px solid gray;
+				border-left: none;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			#list li.active{
+				width: 434px; 
+			}
+			
+			#list li h3 {
+				width: 14px;
+				height: 98px;
+				padding: 40px 18px 0;
+				font-size: 16px;
+			}
+			#list li h3.hover {
+				background: #f45;
+				color: white;
+			}
+			#list li div {
+				width: 384px;
+				height: 138px;
+				position: absolute;
+				top: 0;
+				left: 50px;
+			}
+			
+			#list li.last {
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script>
+			$(function(){
+				
+				$("#list li").mouseenter(function(){
+					//$(this).addClass("active").siblings().removeClass("active")
+					$(this).stop().animate({width:434},200)
+					.siblings().stop().animate({width:50}, 200);
+					
+					$(this).find("h3").html("红玫瑰").addClass("hover")
+					.parent().siblings().find("h3").html("白玫瑰").removeClass("hover");
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li class="active">
+					<h3 class="hover">红玫瑰</h3>
+					<div style="background: blue;"></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div style="background: yellow;"></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div style="background: orange;"></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div style="background: green;"></div>
+				</li>
+				<li class="last">
+					<h3>白玫瑰</h3>
+					<div style="background: pink;"></div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
